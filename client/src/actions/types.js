@@ -1,0 +1,10 @@
+export const GET_MATCHES = "GET_MATCHES";
+export const DELETE_MATCH = "DELETE_MATCH";
+export const ADD_MATCH = "ADD_MATCH";
+export const GET_MATCH = "GET_MATCH";
+export const UPD_MATCH = "UPD_MATCH";
+export const GET_PREDICTIONS = "GET_PREDICTION";
+export const DELETE_PREDICTION = "DELETE_PREDICTION";
+export const ADD_PREDICTION = "ADD_PREDICTION";
+export const GET_PREDICTION = "GET_PREDICTION";
+export const UPD_PREDICTION = "UPD_PREDICTION";
