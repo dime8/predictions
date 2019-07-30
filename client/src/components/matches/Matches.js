@@ -5,6 +5,8 @@ import { getMatches } from "../../actions/matchActions";
 import MatchCard from "./MatchCard";
 import PredictionsDialog from "../predictions/PredictionsDialog";
 
+import { createFragmentContainer, graphql } from "react-relay";
+
 class Matches extends Component {
   state = {
     open: false,
@@ -56,7 +58,22 @@ const mapStateToProps = state => ({
   matches: state.match.matches
 });
 
-export default connect(
-  mapStateToProps,
-  { getMatches }
-)(Matches);
+// export default connect(
+//   mapStateToProps,
+//   { getMatches }
+// )(Matches);
+export default createFragmentContainer(
+  Matches,
+  graphql`
+    fragment Matches_viewer on Viewer {
+      allLinks(last: 100, orderBy: createdAt_DESC)
+        @connection(key: "Matches_allMatches", filters: []) {
+        edges {
+          node {
+            ...Link_link
+          }
+        }
+      }
+    }
+  `
+);

@@ -1,0 +1,44 @@
+schema {
+  query: RootQueryType
+}
+
+type Match {
+  id: ID
+  type: String
+  league: String
+  hostid: ID
+  host: Team
+  guest: Team
+  predictions: [Prediction]
+}
+
+type Prediction {
+  id: ID
+  score: String
+  user: User
+  match: Match
+}
+
+type RootQueryType {
+  match(id: ID): Match
+  prediction(id: ID): Prediction
+  matches: [Match]
+  predictions: [Prediction]
+}
+
+type Team {
+  id: ID
+  name: String
+  type: String
+  league: String
+  matchesHost: [Match]
+  matchesGuest: [Match]
+}
+
+type User {
+  id: ID
+  username: String
+  password: String
+  predictions: [Prediction]
+}
+
